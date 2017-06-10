@@ -1,0 +1,8 @@
+div class="content"
+  div class="header" = activity.user.username
+  div class="meta" #{time_ago_in_words(activity.created_at)} ago
+  div class="description"
+    - if client.present?
+      = link_to "Updated client <strong>#{client.name}</strong>".html_safe, client_path(client)
+    - else
+      | Item has been removed

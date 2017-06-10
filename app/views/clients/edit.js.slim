@@ -1,0 +1,9 @@
+| $('#{ j render "edit" }').modal({
+|   onHidden: function() {
+|     $('body .modals').remove();
+|   },
+|   onApprove: function(){
+|     $(this).find("form").submit();
+|     return false;
+|   }
+| }).modal('show');

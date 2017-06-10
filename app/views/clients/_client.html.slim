@@ -1,0 +1,9 @@
+div class="item" data-client-id="#{client.id}"
+  div class="content"
+    = link_to client.name, edit_client_path(client), remote: true, class: "header"
+    = link_to "#{pluralize(client.orders_count, 'Order')}", client_path(client), class: "ui left pointing right floated violet basic label"
+    div class="meta" 
+      span class="cinema" = client.location
+    div class="extra"
+      = link_to "New order", new_client_order_path(client), class: "ui teal mini button"
+      = link_to "Delete order", client_path(client), method: :delete, class: "ui red mini button"

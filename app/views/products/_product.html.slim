@@ -1,0 +1,21 @@
+div class="card" data-product-id="#{product.id}"
+  div class="content"
+    div class="header" = product.title
+    div class="meta"
+      = number_to_currency(product.price)
+    div class="description"
+      p = product.description
+      div class="right floated"
+        - if product.in_stock?
+          i class="large green checkmark icon" 
+          | Stocked (#{product.quantity})
+        - else
+          i class="large red checkmark icon" 
+          | Unstocked
+  - if allow?("products", "destroy")
+    div class="extra content"
+      div class="ui three buttons"
+        = link_to "Update", edit_product_path(product), class: "ui basic green button"
+        = link_to "Delete", product_path(product), remote: true, method: :delete, class: "ui basic red button"
+  //= link_to '<i class="large red remove circle icon"></i>'.html_safe, product_path(product), remote: true, method: :delete, class: "right align"
+      

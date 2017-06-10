@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @user] do |f|
+  = f.input :username, placeholder: "Username"
+  = f.input :email, placeholder: "Email"
+  = f.input :password, placeholder: "Password"
+  = f.input :password_confirmation, placeholder: "Confirm password"
+  = f.input :admin, label: "Is an admin?"
+  = f.input :role, collection: User::ROLES, prompt: "Select a role", input_html: { class: "ui fluid dropdown" }
+  = f.button :submit, class: "ui button blue"

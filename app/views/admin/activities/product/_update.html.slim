@@ -1,0 +1,8 @@
+div class="content"
+  div class="header" = activity.user.username
+  div class="meta" #{time_ago_in_words(activity.created_at)} ago
+  div class="description" 
+    - if product.present?
+      = link_to "Updated product <strong>#{product.title}</strong>".html_safe, product_path(product), remote: true
+    - else
+      | Item has been removed

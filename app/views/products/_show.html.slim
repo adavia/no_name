@@ -1,0 +1,26 @@
+div class="ui small modal" id="client-modal"
+  i class="close icon"
+  div class="header" Product information
+  div class="content" id="client-form"
+    h3 class="ui header"
+      i class="leaf icon"
+      div class="content"
+        = @product.title
+        div class="sub header"
+          = @product.description
+
+    div class="ui small statistics"
+      div class="violet statistic"
+        div class="value"
+          = @product.quantity
+        div class="label" Stock
+      div class="statistic"
+        div class="value"
+          = number_to_currency(@product.price)
+        div class="label" Price per unit
+      div class="statistic"
+        div class="value"
+          = number_to_currency(@product.price_per_stock)
+        div class="label" Total
+  div class="actions"
+    button class="ui cancel button" Cancel

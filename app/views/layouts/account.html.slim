@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta content=("no-cache") name="turbolinks-cache-control"
+    title StoreManagement
+    = csrf_meta_tags
+    = stylesheet_link_tag    'account', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    div class="ui container"
+      = yield
+

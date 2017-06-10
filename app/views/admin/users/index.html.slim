@@ -1,0 +1,28 @@
+div class="ui container"
+  h2 class="ui center aligned header" 
+    | User accounts
+    div class="sub header" 
+      | Manage the following user accounts
+  == render 'layouts/shared/alert_messages'
+  div class="ui grid"
+    div class="eleven wide column"
+      = link_to "<i class='plus icon'></i> Create new user".html_safe, new_admin_user_path, class: "ui labeled violet small icon button"
+    div class="five wide column"
+      = form_tag(admin_users_path, method: :get) do
+        div class="ui fluid input"
+          = text_field_tag :search, params[:search], placeholder: "Search for a user"
+
+  div class="ui piled segment" style="margin-top:25px;"
+    div class="ui divided items"
+      - @users.each do |user|
+        div class="item"
+          div class="content"
+            = link_to user.username, edit_admin_user_path(user), class: "header"
+            div class="meta" 
+              span class="cinema" = user.email
+            div class="extra"
+              = link_to "Delete", admin_user_path(user), method: :delete, class: "ui red mini button"
+
+    div style="text-align:center"
+      = will_paginate @users
+

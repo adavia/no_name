@@ -1,0 +1,14 @@
+div class="ui small modal" id="client-modal"
+  i class="close icon"
+  div class="header" Product information
+  div class="content"
+    div class="ui divided selection list"
+      - @order.order_items.each do |item|
+        div class="item"
+          div class="right floated" = number_to_currency(item.total_price)
+          div class="ui purple horizontal label" = item.quantity
+          = item.product.title
+    div class="ui violet right floated tag label" 
+      | #{number_to_currency(@order.total_price)} TOTAL
+  div class="actions"
+    button class="ui cancel button" Cancel

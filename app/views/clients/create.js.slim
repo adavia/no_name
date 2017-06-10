@@ -1,0 +1,5 @@
+- if @client.errors.empty?
+  | $('#clients').append('#{ j render @client }');
+  | $('#client-modal').modal('hide');
+- else
+  | $('#client-form').html('#{ j render "form" }');

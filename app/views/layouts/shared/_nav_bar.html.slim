@@ -1,0 +1,25 @@
+div class="ui bottom attached stackable borderless inverted menu topbar"
+  div class="ui simple dropdown item"
+    i class="grid layout icon"
+    | Products
+    i.dropdown.icon
+    .menu
+      = link_to "Products", products_path, class: "item"
+      - if allow?("products", "new")
+        = link_to "New Product", new_product_path, class: "item"
+      - if allow?("orders", "index")
+        = link_to "Orders", orders_path, class: "item"
+  - if current_user.admin?
+    div class="ui simple dropdown item"
+      i class="users icon"
+      | Users
+      i.dropdown.icon
+      .menu
+        = link_to "Users", admin_users_path, class: "item"
+        = link_to "New User", new_admin_user_path, class: "item"
+    = link_to "<i class='browser icon'></i> History".html_safe, admin_activities_path, class: "item"
+  div class="right menu"
+    div class="item"
+      i class="user icon" 
+      | Welcome, #{current_user.username}
+    = link_to "<i class='log out icon'></i> Sign out".html_safe, session_path(current_user), method: :delete, class: "item"

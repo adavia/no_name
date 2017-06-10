@@ -1,0 +1,18 @@
+= simple_form_for [@client, @order] do |f|
+  = f.input :note, placeholder: "Leave a note to this order", input_html: { rows: 3 }
+  - if @order.persisted?
+    = f.input :state, collection: Order::STATES, input_html: { class: "ui fluid dropdown" }
+  table class="ui celled table"
+    thead
+      tr 
+        th class="eight wide" Product
+        th Quantity
+        th
+    tbody
+      = f.simple_fields_for :order_items do |builder|
+        == render "order_item_fields", f: builder
+    tfoot class="full-width"
+      tr
+        th colspan="3"
+          = link_to_add_fields "Add New Item", f, :order_items
+          = f.button :submit, class: "ui right floated primary button"

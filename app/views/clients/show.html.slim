@@ -1,0 +1,15 @@
+div class="ui container"
+  h2 class="ui center aligned header" 
+    | Client orders
+    div class="sub header" 
+      | Manage the following client orders
+  == render 'layouts/shared/alert_messages'
+  div class="ui grid"
+    div class="eleven wide column"
+      = link_to "<i class='plus icon'></i> Create new order".html_safe, new_client_order_path(@client), class: "ui labeled green small icon button"
+    div class="five wide column"
+      = render "search_form", client: @client
+  == render @orders
+
+  div style="text-align:center"
+    = will_paginate @orders

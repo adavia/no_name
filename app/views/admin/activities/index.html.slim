@@ -1,0 +1,15 @@
+div class="ui container"
+  h2 class="ui center aligned header" 
+    | History log
+    div class="sub header" 
+      | User activity log allowed for admins
+  div class="ui piled segment" style="margin-top:25px;"
+    div class="ui divided items"
+      - @activities.each do |activity|
+        div class="item"
+          = ActivityPresenter.new(activity, self).render_activity
+
+    div style="text-align:center"
+      = will_paginate @activities
+
+

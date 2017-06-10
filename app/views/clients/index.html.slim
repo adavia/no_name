@@ -1,0 +1,20 @@
+div class="ui container"
+  h2 class="ui center aligned header" 
+    | Client list
+    div class="sub header" 
+      | Manage the following clients
+  == render 'layouts/shared/alert_messages'
+  div class="ui grid"
+    div class="eleven wide column"
+      = link_to "<i class='plus icon'></i> Create new client".html_safe, new_client_path, remote: true,  class: "ui labeled violet small icon button"
+    div class="five wide column"
+      = form_tag(clients_path, method: :get) do
+        div class="ui fluid input"
+          = text_field_tag :search, params[:search], placeholder: "Search for a client"
+
+  div class="ui piled segment" style="margin-top:25px;"
+    div class="ui divided items" id="clients"
+      == render @clients
+
+      div style="text-align:center"
+        = will_paginate @clients

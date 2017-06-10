@@ -1,0 +1,7 @@
+= image_tag "logo.png", class: "ui centered small image"
+div class="ui raised segment"
+  == render 'layouts/shared/alert_messages'
+  = simple_form_for :session, { url: sessions_path } do |f|
+    = f.input :email, label: false, placeholder: "Your email address"
+    = f.input :password, label: false, placeholder: "Your password"
+    = f.button :submit, "Sign In", class: "ui fluid button"

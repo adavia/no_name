@@ -1,0 +1,8 @@
+tr
+  td
+    = f.association :product, label: false, input_html: { class: "ui fluid dropdown" }
+  td
+    = f.input :quantity, label: false
+  td class="center aligned"
+    = f.hidden_field :_destroy
+    = link_to "Remove", "#", data: { behavior: "order-remove-fields" }, class: "ui basic red mini button"

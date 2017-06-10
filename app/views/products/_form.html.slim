@@ -1,0 +1,6 @@
+= simple_form_for @product do |f|
+  = f.input :title, placeholder: "Product title"
+  = f.input :description, as: :text, placeholder: "Description"
+  = f.input :quantity, placeholder: "Quantity"
+  = f.input :price, placeholder: "Price"
+  = f.button :submit, class: "ui button"

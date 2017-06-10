@@ -1,0 +1,15 @@
+div class="ui fluid container"
+  div class="ui stackable horizontally padded divided grid"
+    div class="ten wide column"
+      == render 'layouts/shared/alert_messages'
+      div class="ui three stackable cards" id="products"
+        == render @products
+        div style="text-align:center"
+          = will_paginate @products
+    div class="six wide column"
+      - if allow?("clients", "index")
+        div class="ui mini buttons"
+          = link_to "All Clients", clients_path, class: "ui primary button"
+          = link_to "New Client", new_client_path, remote: true, class: "ui button"
+        div class="ui divided items" id="clients"
+          == render @clients

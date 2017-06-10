@@ -1,0 +1,22 @@
+div class="ui segment"
+  = link_to '<i class="remove icon"></i>'.html_safe, client_order_path(order.client, order), method: :delete, class: "ui right corner label"
+  div class="ui grid"
+    div class="eleven wide column"
+      h3 class="ui header"
+        i class="file text outline icon"
+        div class="content" 
+          | Order ##{order.id}
+          div class="sub header"
+            | #{time_ago_in_words(order.created_at)} ago by 
+            = link_to "<strong>#{order.client.name}</strong>".html_safe, client_path(order.client)
+    div class="four wide column"
+      = simple_form_for [order.client, order], data: { behavior: "order-state-select" } do |f|
+        = f.input :state, label: false, collection: Order::STATES, input_html: { class: "ui fluid dropdown" }, selected: order.state
+  div class="ui divided selection list"
+    - order.order_items.each do |item|
+      div class="item"
+        div class="right floated" = number_to_currency(item.total_price)
+        div class="ui purple horizontal label" = item.quantity
+        = link_to item.product.title, product_path(item.product), remote: true
+  div class="ui violet right floated tag label" 
+    | #{number_to_currency(order.total_price)} TOTAL

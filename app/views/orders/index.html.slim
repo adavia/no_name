@@ -1,0 +1,14 @@
+div class="ui container"
+  h2 class="ui center aligned header" 
+    | Orders
+    div class="sub header" 
+      | Manage the following product orders
+  == render 'layouts/shared/alert_messages'
+  div class="ui grid"
+    div class="right floated five wide column"
+      = form_tag(orders_path, method: :get, data: { behavior: "order-state-select" }) do 
+        = select_tag :search, options_for_select(Order::STATES), prompt: "Filter by state", class: "ui fluid dropdown"
+  == render @orders
+  
+  div style="text-align:center"
+    = will_paginate @orders

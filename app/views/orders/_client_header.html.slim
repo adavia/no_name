@@ -1,0 +1,5 @@
+h2 class="ui header"
+  = @client.name
+  = link_to "#{pluralize(@client.orders_count, 'Order')}", client_path(@client), class: "ui left pointing blue basic label"
+  div class="sub header"
+    = @client.location
